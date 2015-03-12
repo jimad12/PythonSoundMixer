@@ -1,2 +1,2 @@
 # PythonSoundMixer
-Dj Sound Mixer buit with python
+Dj Sound Mixer built with python
