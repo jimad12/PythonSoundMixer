@@ -3,6 +3,7 @@
 from Tkinter import *
 from sound_DjMix import *
 import pygame.mixer
+import os
 
 """
 DJ Application For Mixing Tracks
@@ -18,22 +19,15 @@ app.geometry("650x400+300+300")
 mixer = pygame.mixer 
 mixer.init()
 
-bodyTxt = Label(app, text="Cool DJ Sound Tracks Mixer", height=3)
+bodyTxt = Label(app, text="Cool DJ Sound Tracks Mixer", height=3, background ="green")
 bodyTxt.pack( padx= 10, pady =10)
- 
-#Create the widget's objects 
-DjMix = SoundMixer(app, mixer, "bg3.wav")
-DjMix.pack()
 
-DjMix = SoundMixer(app, mixer, "MainTheme.wav")
-DjMix.pack()
-
-DjMix = SoundMixer(app, mixer, "Rattle.wav")
-DjMix.pack()
-
-DjMix = SoundMixer(app, mixer, "Warning.wav")
-DjMix.pack()
-
+#get the names of all the files in the current directory
+dirList = os.listdir(".")
+for fname in dirList:
+  if fname.endswith("wav"):
+    DjMix = SoundMixer(app, mixer, fname)
+    DjMix.pack()
 
   
 #Capture Other window events to stop the track when the user click x to close gui before stoping it
